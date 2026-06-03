@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <!-- Настройка адаптивности: сайт корректно отображается на любых экранах -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>GLAMPING · тёмная нежность · Liquid Glass</title>
+    <!-- 
+        ==================================================================
+        НОВАЯ ВЕРСИЯ:
+        - ФОН ТЁМНЫЙ (#050505, #0C0C0D) — глубокий чёрный оттенок.
+        - Карточки в стиле iOS Liquid Glass на тёмном фоне (полупрозрачное тёмное стекло, 
+          светящиеся грани, размытие, мягкие тени).
+        - Добавлено ПРИВЕТСТВИЕ с романтической атмосферой и вдохновляющим текстом.
+        - Сохранена простота кода: никаких фреймворков, только чистый HTML/CSS/JS.
+        - Все фото реальные (Unsplash), дизайн минималистичный, но эмоциональный.
+        ==================================================================
+    -->
+    <style>
+        /* ----- ГЛОБАЛЬНЫЙ СБРОС И БАЗОВЫЕ СТИЛИ (тёмная тема) ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* глубокий чёрный фон с лёгким отливом в сторону графита */
+            background: radial-gradient(circle at 10% 20%, #0a0a0c, #010101);
+            font-family: system-ui, -apple-system, 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif;
+            color: #ececef;
+            line-height: 1.5;
+            padding: 2rem 1.5rem 4rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        /* основной контейнер-центрировщик */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* ----- РОМАНТИЧЕСКОЕ ПРИВЕТСТВИЕ (ВСТУПЛЕНИЕ) ----- */
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        /* небольшая анимация появления для плавности */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* стилизованный эпиграф / акцент */
+        .hero-sub {
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #aaa9b2;
+            background: rgba(255,255,255,0.03);
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 620;
+            background: linear-gradient(135deg, #f0f0f5, #b0b0c0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.8rem;
+        }
+
+        /* романтическое описание */
+        .hero-romance {
+            max-width: 720px;
+            margin: 1.5rem auto 0 auto;
+            font-size: 1.1rem;
+            color: #cdcddf;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 1rem 1.8rem;
+            border: 0.5px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-romance p {
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-romance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .small-dream {
+            font-style: italic;
+            font-weight: 400;
+            color: #c7c7dd;
+        }
+
+        /* ----- СЕТКА КАРТОЧЕК (адаптивная) ----- */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* ----- СТИЛЬ iOS LIQUID GLASS НА ТЁМНОМ ФОНЕ ----- */
+        /* Главный принцип: полупрозрачный тёмный фон + сильное размытие, белая полупрозрачная граница */
+        .glass-card {
+            background: rgba(25, 25, 35, 0.55);   /* тёмно-серый с прозрачностью */
+            backdrop-filter: blur(14px);          /* размытие заднего фона — эффект матового стекла */
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 0 0.5px rgba(255, 255, 255, 0.1) inset;
+            /* внутренняя светлая линия делает карточку "жидкой" */
+            border: 0.5px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
+        }
+
+        /* при наведении — плавный подъём и усиление свечения */
+        .glass-card:hover {
+            transform: translateY(-8px);
+            background: rgba(35, 35, 48, 0.65);
+            box-shadow: 0 22px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .glass-card:hover .card-img {
+            transform: scale(1.03);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.55rem;
+            font-weight: 620;
+            letter-spacing: -0.3px;
+            color: #f2f2f7;
+            margin-bottom: 0.4rem;
+        }
+
+        .card-location {
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            color: #adadc9;
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-description {
+            font-size: 0.9rem;
+            color: #d9d9e3;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+            padding-top: 0.8rem;
+            margin-top: 0.3rem;
+        }
+
+        .price {
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: #f5f5fa;
+        }
+
+        .price small {
+            font-size: 0.75rem;
+            font-weight: normal;
+            color: #aeaece;
+        }
+
+        .tag {
+            background: rgba(100, 100, 130, 0.35);
+            backdrop-filter: blur(6px);
+            padding: 0.25rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #dedeef;
+            border: 0.2px solid rgba(255,255,255,0.2);
+        }
+
+        /* ----- МОДАЛЬНОЕ ОКНО (LIQUID GLASS УГЛУБЛЁННЫЙ) ----- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1100;
+        }
+
+        .modal-content {
+            background: rgba(22, 22, 30, 0.9);
+            backdrop-filter: blur(25px);
+            border-radius: 2.5rem;
+            width: 90%;
+            max-width: 480px;
+            padding: 1.8rem;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            animation: modalZoom 0.25s ease-out;
+        }
+
+        @keyframes modalZoom {
+            from {
+                opacity: 0;
+                transform: scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-content img {
+            width: 100%;
+            border-radius: 1.5rem;
+            margin-bottom: 1rem;
+            max-height: 210px;
+            object-fit: cover;
+        }
+
+        .modal-content h3 {
+            font-size: 1.8rem;
+            margin: 0.3rem 0;
+            color: #ffffff;
+        }
+
+        .modal-location {
+            color: #aeaecb;
+            margin-bottom: 0.8rem;
+        }
+
+        .modal-content p {
+            margin: 0.8rem 0;
+            color: #e2e2f0;
+        }
+
+        .close-modal {
+            background: rgba(255, 255, 255, 0.1);
+            border: 0.5px solid rgba(255, 255, 255, 0.3);
+            padding: 0.6rem 1.6rem;
+            border-radius: 3rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #f0f0ff;
+            margin-top: 1rem;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.2s;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(0.98);
+        }
+
+        /* footer в тёмной теме */
+        footer {
+            text-align: center;
+            margin-top: 4.5rem;
+            color: #7a7a94;
+            font-size: 0.75rem;
+            border-top: 0.5px solid rgba(255, 255, 255, 0.08);
+            padding-top: 2rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 680px) {
+            body {
+                padding: 1rem;
+            }
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .hero-romance {
+                font-size: 0.95rem;
+                padding: 0.8rem 1rem;
+            }
+            .card-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- ========== НОВОЕ РОМАНТИЧЕСКОЕ ВСТУПЛЕНИЕ ========== -->
+    <div class="hero">
+        <div class="hero-sub">✦ escape into silence ✦</div>
+        <h1>glamping · lunar whispers</h1>
+        <div class="hero-romance">
+            <p>✨ <strong>Нежность на краю леса</strong> ✨</p>
+            <p>Представьте: вы засыпаете под шёпот сосен, а звёзды заглядывают в прозрачный купол. 
+            Глэмпинг — это не просто отдых, это способ почувствовать романтику дикой природы, 
+            не отказываясь от мягких одеял, тёплого чая и уюта.</p>
+            <p class="small-dream">«Там, где горят свечи и тихо струится рассвет…»</p>
+            <p>Коснитесь карточки — внутри живет ваше маленькое приключение.</p>
+        </div>
+    </div>
+
+    <!-- сетка, куда подгрузятся карточки глэмпингов -->
+    <div class="cards-grid" id="glampingGrid"></div>
+
+    <footer>
+        © 2025 GLAMPING · тёмная магия liquid glass · реальные места для двоих или уединения
+    </footer>
+</div>
+
+<!-- модальное окно (детали) -->
+<div id="modal" class="modal">
+    <div class="modal-content" id="modalContent"></div>
+</div>
+
+<script>
+    // --------------------------------------------------------------
+    // МАССИВ С РЕАЛЬНЫМИ ФОТО ГЛЭМПИНГОВ (Unsplash)
+    // --------------------------------------------------------------
+    const glampings = [
+        {
+            id: 1,
+            title: "Лунный купол",
+            location: "Карелия, лесное озеро",
+            description: "Купол из закалённого стекла. Внутри камин и панорамная кровать. Тишина и северное сияние.",
+            price: "13 500 ₽",
+            tag: "✨ звёздный",
+            imgUrl: "https://images.unsplash.com/photo-1571068316344-75a76e1b5eaa?w=600&auto=format",
+            fullDesc: "Идеальное место для двоих. Прозрачные стены дарят ощущение невесомости. Подогреваемый пол, ужин при свечах."
+        },
+        {
+            id: 2,
+            title: "Эхо леса",
+            location: "Краснодарский край, предгорье",
+            description: "Шатёр с элементами бохо. Рядом — река и костровая зона. Атмосфера свободы и аромат трав.",
+            price: "8 900 ₽",
+            tag: "романтика",
+            imgUrl: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&auto=format",
+            fullDesc: "Большая кровать, винтажный ковёр, кресло-качалка. Идеально для долгих разговоров ночью и завтрака на траве."
+        },
+        {
+            id: 3,
+            title: "Облачный A-frame",
+            location: "Алтай, Чемал",
+            description: "Дом-треугольник с гигантским окном на скалы. Панорама, дровяная печь и приватный чан.",
+            price: "16 200 ₽",
+            tag: "премиум",
+            imgUrl: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=600&auto=format",
+            fullDesc: "Ароматные травяные чаи, рассветы в постели и личная терраса на высоте. Место силы для влюблённых."
+        },
+        {
+            id: 4,
+            title: "Сафари sweet",
+            location: "Подмосковье, эко-парк",
+            description: "Просторная палатка с мебелью из натурального дерева и звездным окном. Звуки природы.",
+            price: "7 900 ₽",
+            tag: "уют",
+            imgUrl: "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=600&auto=format",
+            fullDesc: "Мягкие пледы, уютная терраса, мангал и свечной ужин. Красивый лес в двух шагах."
+        },
+        {
+            id: 5,
+            title: "Морской бриз",
+            location: "Крым, бухта Ласпи",
+            description: "Стильный глэмпинг с видом на море. Полотняные шторы, шезлонги и аромат можжевельника.",
+            price: "14 000 ₽",
+            tag: "море",
+            imgUrl: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&auto=format",
+            fullDesc: "Настоящее убежище на скале. Закаты над морем, свежая рыба на гриле, винил и тишина."
+        },
+        {
+            id: 6,
+            title: "Секретная роща",
+            location: "Ленобласть, Вуокса",
+            description: "Сферический купол в сосновом бору с дровяной печкой и панорамной ванной.",
+            price: "11 200 ₽",
+            tag: "♥️ укромный",
+            imgUrl: "https://images.unsplash.com/photo-1484960055659-a39d6adcb7e3?w=600&auto=format",
+            fullDesc: "Уединение только для вас. На территории — сауна-бочка и маленький пруд. Сказка в соснах."
+        }
+    ];
+
+    // получаем контейнер для карточек
+    const grid = document.getElementById("glampingGrid");
+    const modalEl = document.getElementById("modal");
+    const modalContentDiv = document.getElementById("modalContent");
+
+    // рендер всех карточек (проходит по массиву и создаёт каждую карточку в виде HTML)
+    function renderAllCards() {
+        grid.innerHTML = ""; // очищаем сетку перед вставкой (если нужна перерисовка)
+
+        glampings.forEach(glamp => {
+            // создаём <div> карточки
+            const card = document.createElement("div");
+            card.className = "glass-card";
+            card.setAttribute("data-id", glamp.id);
+            
+            // заполняем содержимое карточки (структура)
+            card.innerHTML = `
+                <img class="card-img" src="${glamp.imgUrl}" alt="${glamp.title}" loading="lazy">
+                <div class="card-content">
+                    <div class="card-title">${glamp.title}</div>
+                    <div class="card-location">
+                        <span>📍</span> ${glamp.location}
+                    </div>
+                    <div class="card-description">${glamp.description}</div>
+                    <div class="card-footer">
+                        <div class="price">${glamp.price} <small>/ ночь</small></div>
+                        <div class="tag">${glamp.tag}</div>
+                    </div>
+                </div>
+            `;
+            
+            // обработчик клика: открыть модалку с полным описанием
+            card.addEventListener("click", (e) => {
+                openModalDetails(glamp.id);
+            });
+            
+            grid.appendChild(card);
+        });
+    }
+    
+    // функция открытия модального окна с деталями (liquid glass эффект)
+    function openModalDetails(id) {
+        const selected = glampings.find(g => g.id === id);
+        if (!selected) return;
+        
+        // формируем содержимое модального окна (более романтичный текст)
+        modalContentDiv.innerHTML = `
+            <img src="${selected.imgUrl}" alt="${selected.title}">
+            <h3>${selected.title}</h3>
+            <div class="modal-location">📍 ${selected.location}</div>
+            <p style="font-weight:400">${selected.fullDesc}</p>
+            <p><strong>${selected.price}</strong> / ночь<br><span style="font-size:0.8rem;">включён завтрак и вайб мечты</span></p>
+            <button class="close-modal">закрыть →</button>
+        `;
+        
+        modalEl.style.display = "flex";
+        
+        // добавляем обработчик к кнопке закрытия после того, как она появилась
+        const closeBtn = modalContentDiv.querySelector(".close-modal");
+        closeBtn.addEventListener("click", closeModal);
+    }
+    
+    // закрытие модального окна
+    function closeModal() {
+        modalEl.style.display = "none";
+    }
+    
+    // клик на задний фон модалки – закрываем
+    modalEl.addEventListener("click", (event) => {
+        if (event.target === modalEl) {
+            closeModal();
+        }
+    });
+    
+    // закрытие по Escape
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modalEl.style.display === "flex") {
+            closeModal();
+        }
+    });
+    
+    // запускаем создание карточек
+    renderAllCards();
+
+    /* 
+        ===============================================================
+        ПОДРОБНЫЕ КОММЕНТАРИИ ДЛЯ ПЕРВОКУРСНИКОВ (ЧТО ОЗНАЧАЮТ ПАРАМЕТРЫ):
+        
+        1) background: radial-gradient(...) — создаёт плавный переход оттенков чёрного, фон не плоский.
+        2) backdrop-filter: blur(14px) — размывает всё, что находится ЗА элементом (основа стеклянного стиля).
+        3) rgba(25, 25, 35, 0.55) — цвет стекла: тёмно-серый с прозрачностью 55%.
+        4) box-shadow с inset — создаёт внутреннее свечение, имитируя объём жидкости.
+        5) grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) — умная сетка:
+            - auto-fill: автоматически заполняет ряд карточками;
+            - minmax(300px, 1fr): каждая карточка минимум 300px, а если место есть — расширяется равномерно.
+        6) transition: transform 0.3s — плавная анимация при наведении.
+        7) JavaScript массив — хранит данные, потом при помощи forEach создаются карточки,
+            чтобы не писать 6 раз один и тот же HTML вручную.
+        8) modal (модальное окно) — появляется по клику, показывает детали.
+            Принцип: display: flex (показать) / display: none (скрыть).
+        9) data-id — связывает карточку с конкретным глэмпингом в массиве.
+        
+        Весь дизайн тёмный, но читаемый, эффект Liquid Glass усиливает премиальность.
+        Код лёгкий для понимания, не переусложнён. Романтическое вступление создаёт настроение.
+        ===============================================================
+    */
+</script>
+</body>
+</html>
