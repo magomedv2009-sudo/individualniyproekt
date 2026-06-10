@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Развлечения и SPA | Green Haven</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f5; color: #333; line-height: 1.6; }
+        header { background: #2c4c38; padding: 20px; position: sticky; top: 0; z-index: 100; }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        nav .logo { color: #fff; font-size: 24px; font-weight: bold; text-decoration: none; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { color: #e4ebe6; text-decoration: none; font-size: 16px; }
+        nav ul li a:hover, nav ul li a.active { color: #a3c9a8; font-weight: bold; }
+
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        h1 { color: #2c4c38; text-align: center; margin-bottom: 40px; }
+        
+        .activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; }
+        @media (max-width: 500px) { .activities-grid { grid-template-columns: 1fr; } }
+        
+        .activity-card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .activity-card img { width: 100%; height: 280px; object-fit: cover; }
+        .activity-body { padding: 25px; }
+        .activity-body h3 { color: #2c4c38; margin-bottom: 10px; }
+        .price-tag { color: #52796f; font-weight: bold; margin-top: 15px; }
+
+        footer { background: #1b2e22; color: #84a98c; text-align: center; padding: 20px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">🌲 Green Haven</a>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="cabins.html">Наши Домики</a></li>
+                <li><a href="activities.html" class="active">Развлечения</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Сферы отдыха и досуга</h1>
+        
+        <div class="activities-grid">
+            <div class="activity-card">
+                <img src="https://nature-resort.at" alt="Банный комплекс">
+                <div class="activity-body">
+                    <h3>Термальный комплекс и Банный чан</h3>
+                    <p>Расслабьтесь телом и душой в нашей кедровой бане и сибирском чане под открытым небом с добавлением ароматных луговых управ и хвои.</p>
+                    <p class="price-tag">Стоимость: 3 000 ₽ / час</p>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="https://kaskalkantours.com" alt="Экстрим">
+                <div class="activity-body">
+                    <h3>Сафари на квадроциклах</h3>
+                    <p>Увлекательные маршруты разной сложности по лесному бездорожью в сопровождении опытного инструктора. Защитная экипировка выдается.</p>
+                    <p class="price-tag">Стоимость: от 4 500 ₽ / маршрут</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Парк-отель Green Haven. Все права защищены.</p>
+    </footer>
+
+</body>
+</html>

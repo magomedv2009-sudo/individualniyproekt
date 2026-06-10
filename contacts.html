@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | Green Haven</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f5; color: #333; line-height: 1.6; }
+        header { background: #2c4c38; padding: 20px; position: sticky; top: 0; z-index: 100; }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        nav .logo { color: #fff; font-size: 24px; font-weight: bold; text-decoration: none; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { color: #e4ebe6; text-decoration: none; font-size: 16px; }
+        nav ul li a:hover, nav ul li a.active { color: #a3c9a8; font-weight: bold; }
+
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        h1 { color: #2c4c38; text-align: center; margin-bottom: 40px; }
+
+        .contact-wrapper { display: flex; gap: 40px; background: #fff; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .contact-info, .contact-form { flex: 1; }
+        
+        .contact-info h2, .contact-form h2 { color: #2c4c38; margin-bottom: 20px; }
+        .contact-info p { margin-bottom: 15px; font-size: 16px; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: #52796f; }
+        .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
+        .form-group textarea { height: 120px; resize: none; }
+        
+        .btn-submit { background: #2c4c38; color: #fff; border: none; padding: 12px 25px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; }
+        .btn-submit:hover { background: #52796f; }
+
+        @media (max-width: 768px) { .contact-wrapper { flex-direction: column; } }
+        footer { background: #1b2e22; color: #84a98c; text-align: center; padding: 20px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">🌲 Green Haven</a>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="cabins.html">Наши Домики</a></li>
+                <li><a href="activities.html">Развлечения</a></li>
+                <li><a href="contacts.html" class="active">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Свяжитесь с нами</h1>
+
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h2>Контакты</h2>
+                <p>📍 <strong>Адрес:</strong> Ленинградская область, Приозерский район, пос. Сосново, ул. Лесная, д. 45</p>
+                <p>📞 <strong>Телефон:</strong> +7 (812) 555-44-33</p>
+                <p>✉️ <strong>Email:</strong> info@greenhaven-resort.ru</p>
+                <p>⏰ <strong>Время работы:</strong> Заселение с 14:00 | Выезд до 12:00. Администрация работает круглосуточно.</p>
+            </div>
+
+            <div class="contact-form">
+                <h2>Оставить заявку</h2>
+                <form action="#" method="POST" onsubmit="alert('Спасибо! Ваша заявка успешно отправлена. Администратор свяжется с вами в течение 15 минут.'); return false;">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" required placeholder="Иван Иванов">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Номер телефона</label>
+                        <input type="tel" id="phone" required placeholder="+7 (999) 000-00-00">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Какой домик или услуга вас интересует?</label>
+                        <textarea id="message" placeholder="Например: Коттедж A-Frame на выходные с баней"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Парк-отель Green Haven. Все права защищены.</p>
+    </footer>
+
+</body>
+</html>

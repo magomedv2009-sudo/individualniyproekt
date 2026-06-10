@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аренда домиков | Green Haven</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f5; color: #333; line-height: 1.6; }
+        header { background: #2c4c38; padding: 20px; position: sticky; top: 0; z-index: 100; }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        nav .logo { color: #fff; font-size: 24px; font-weight: bold; text-decoration: none; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { color: #e4ebe6; text-decoration: none; font-size: 16px; }
+        nav ul li a:hover, nav ul li a.active { color: #a3c9a8; font-weight: bold; }
+
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        h1 { color: #2c4c38; text-align: center; margin-bottom: 40px; }
+
+        .cabin-item { display: flex; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .cabin-item img { width: 45%; max-height: 350px; object-fit: cover; }
+        .cabin-info { padding: 30px; display: flex; flex-direction: column; justify-content: center; width: 55%; }
+        .cabin-info h2 { color: #2c4c38; margin-bottom: 15px; }
+        .price { font-size: 22px; color: #52796f; font-weight: bold; margin: 15px 0; }
+        .features { list-style: none; margin-bottom: 20px; font-size: 14px; color: #666; }
+        .features li { margin-bottom: 5px; }
+        .btn { background: #84a98c; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; width: fit-content; transition: 0.3s; }
+        .btn:hover { background: #52796f; }
+
+        @media (max-width: 768px) {
+            .cabin-item { flex-direction: column; }
+            .cabin-item img, .cabin-info { width: 100%; }
+        }
+        footer { background: #1b2e22; color: #84a98c; text-align: center; padding: 20px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">🌲 Green Haven</a>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="cabins.html" class="active">Наши Домики</a></li>
+                <li><a href="activities.html">Развлечения</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Варианты проживания</h1>
+
+        <div class="cabin-item">
+            <img src="https://bstatic.com" alt="A-Frame Коттедж">
+            <div class="cabin-info">
+                <h2>Лесной Коттедж «A-Frame»</h2>
+                <p>Стильный треугольный дом с панорамными окнами на сосновый бор. Идеален для романтического уикенда или отдыха небольшой семьи.</p>
+                <p class="price">от 7 500 ₽ / сутки</p>
+                <ul class="features">
+                    <li>📐 Площадь: 45 кв.м.</li>
+                    <li>👥 Вместимость: до 4 человек</li>
+                    <li>🔥 Мангальная зона и терраса включены</li>
+                </ul>
+                <a href="contacts.html" class="btn">Забронировать</a>
+            </div>
+        </div>
+
+        <div class="cabin-item">
+            <img src="https://bstatic.com" alt="Семейное Шале">
+            <div class="cabin-info">
+                <h2>Семейное Шале с Камином</h2>
+                <p>Просторный деревянный дом из натурального сруба. Внутри — настоящий дровяной камин, большая гостиная и уютная обеденная зона.</p>
+                <p class="price">от 12 000 ₽ / сутки</p>
+                <ul class="features">
+                    <li>📐 Площадь: 90 кв.м.</li>
+                    <li>👥 Вместимость: до 8 человек</li>
+                    <li>🪵 Настоящий камин (дрова предоставляются)</li>
+                </ul>
+                <a href="contacts.html" class="btn">Забронировать</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Парк-отель Green Haven. Все права защищены.</p>
+    </footer>
+
+</body>
+</html>
